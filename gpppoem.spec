@@ -56,7 +56,7 @@ Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;X-MandrivaLinux-System-Monitoring
+Categories=GNOME;X-MandrivaLinux-System-Monitoring;
 EOF
 
 %find_lang %name
