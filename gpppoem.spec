@@ -13,6 +13,7 @@ Source: http://footprints.altervista.org/archivio/gpppoem/%{name}-%{version}.tar
 Source10: gpppoem-16.png
 Source11: gpppoem-32.png
 Source12: gpppoem-48.png
+BuildRoot: %{_tmppath}/build-root-%{name}
 BuildRequires: automake >= 1.7
 Buildrequires: libgnome2-devel >= 2.0
 Buildrequires: libgnomeui2-devel >= 2.0
