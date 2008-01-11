@@ -38,13 +38,6 @@ mkdir -p %{buildroot}/{%{_iconsdir},%{_liconsdir},%{_miconsdir}}
 cp %SOURCE10 %{buildroot}/%_miconsdir/%name.png
 cp %SOURCE11 %{buildroot}/%_iconsdir/%name.png
 cp %SOURCE12 %{buildroot}/%_liconsdir/%name.png
-mkdir -p %{buildroot}/%{_menudir}
-cat << EOF > %{buildroot}/%{_menudir}/%{name}
-?package(%name):command="%{_bindir}/gpppoem" icon="%name.png" \
-                needs="X11" section="Applications/Monitoring" \
- title="Gpppoem" longtitle="Pppoe monitor" \
- xdg="true"
-EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -73,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %name.lang
 %defattr(-,root,root,0755)
 %{_bindir}/*
-%_menudir/%name
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/%name.png
 %{_liconsdir}/%name.png
