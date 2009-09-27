@@ -13,22 +13,21 @@ Source: http://footprints.altervista.org/archivio/gpppoem/%{name}-%{version}.tar
 Source10: gpppoem-16.png
 Source11: gpppoem-32.png
 Source12: gpppoem-48.png
-BuildRoot: %{_tmppath}/build-root-%{name}
 BuildRequires: automake >= 1.7
 Buildrequires: libgnome2-devel >= 2.0
 Buildrequires: libgnomeui2-devel >= 2.0
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 Monitor your pppoe connection. 
 It can also monitor your eth0 connection.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT
 %setup -q -n %name-0.1
+autoreconf -f -i
 
 %build
-%configure
+%configure2_5x
 
 %install
 rm -rf ${RPM_BUILD_ROOT}
