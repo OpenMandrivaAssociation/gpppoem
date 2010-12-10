@@ -1,6 +1,6 @@
 %define name gpppoem
 %define version 0.1.1
-%define release %mkrel 7
+%define release %mkrel 8
 
 Name: %name
 Summary: Monitor your pppoe connection
