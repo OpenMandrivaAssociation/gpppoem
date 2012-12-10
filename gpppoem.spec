@@ -9,14 +9,13 @@ Release: %{release}
 License: GPL
 Url: http://footprints.altervista.org/index.php
 Group: Monitoring
-Source: http://footprints.altervista.org/archivio/gpppoem/%{name}-%{version}.tar.bz2
+Source0: http://footprints.altervista.org/archivio/gpppoem/%{name}-%{version}.tar.bz2
 Source10: gpppoem-16.png
 Source11: gpppoem-32.png
 Source12: gpppoem-48.png
 BuildRequires: automake >= 1.7
 Buildrequires: libgnome2-devel >= 2.0
 Buildrequires: libgnomeui2-devel >= 2.0
-BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 Monitor your pppoe connection. 
@@ -24,13 +23,13 @@ It can also monitor your eth0 connection.
 
 %prep
 %setup -q -n %name-0.1
-autoreconf -f -i
 
 %build
+export LIBS="-lX11"
+autoreconf -vif
 %configure2_5x
 
 %install
-rm -rf ${RPM_BUILD_ROOT}
 %makeinstall_std prefix=%buildroot%_prefix
 
 mkdir -p %{buildroot}/{%{_iconsdir},%{_liconsdir},%{_miconsdir}}
@@ -51,22 +50,7 @@ StartupNotify=true
 Categories=GNOME;X-MandrivaLinux-System-Monitoring;
 EOF
 
-%find_lang %name
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%files -f %name.lang
+%files
 %defattr(-,root,root,0755)
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
@@ -75,4 +59,45 @@ rm -rf $RPM_BUILD_ROOT
 %{_miconsdir}/%name.png
 %{_datadir}/pixmaps/%name/gppp.png
 
+
+
+
+%changelog
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.1.1-8mdv2011.0
++ Revision: 619248
+- the mass rebuild of 2010.0 packages
+
+* Mon Sep 28 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.1.1-7mdv2010.0
++ Revision: 450311
+- fix build
+- rebuild for missing binaries
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - drop old menu
+    - kill re-definition of %%buildroot on Pixel's request
+    - kill desktop-file-validate's error: string list key "Categories" in group "Desktop Entry" does not have a semicolon (";") as trailing character
+
+  + Tomasz Pawel Gajc <tpg@mandriva.org>
+    - rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Sun Aug 06 2006 Olivier Thauvin <nanardon@mandriva.org>
++ 08/06/06 21:16:31 (53674)
+- xdg menu
+- %%mkrel
+
+* Sun Aug 06 2006 Olivier Thauvin <nanardon@mandriva.org>
++ 08/06/06 21:08:55 (53673)
+Import gpppoem
+
+* Sat Jan 29 2005 Sylvie Terjan <erinmargault@mandrake.org> 0.1.1-1mdk
+- 0.1.1
 
