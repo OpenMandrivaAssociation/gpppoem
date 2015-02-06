@@ -1,7 +1,7 @@
 Summary:	Monitor your pppoe connection
 Name:		gpppoem
 Version:	0.1.1
-Release:	9
+Release:	10
 License:	GPLv2+
 Group:		Monitoring
 Url:		http://footprints.altervista.org/index.php
