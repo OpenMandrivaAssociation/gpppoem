@@ -4,7 +4,7 @@ Version:	0.1.1
 Release:	10
 License:	GPLv2+
 Group:		Monitoring
-Url:		http://footprints.altervista.org/index.php
+Url:		https://footprints.altervista.org/index.php
 Source0:	http://footprints.altervista.org/archivio/%{name}/%{name}-%{version}.tar.bz2
 Source10:	gpppoem-16.png
 Source11:	gpppoem-32.png
